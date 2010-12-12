@@ -1,4 +1,3 @@
-
 #ifndef PRINCIPAL_H
 #define PRINCIPAL_H
 
@@ -16,6 +15,7 @@
 #include <geos/geom/IntersectionMatrix.h>
 #include <geos/io/WKBReader.h>
 #include <geos/io/WKBWriter.h>
+#include <geos/io/WKTReader.h>
 #include <geos/io/WKTWriter.h>
 #include <geos/util/GeometricShapeFactory.h>
 #include <geos/util/GEOSException.h>
@@ -25,6 +25,7 @@
 
 #include <string>
 #include <vector>
+#include <list>
 
 #ifndef M_PI
 #define M_PI       3.14159265358979323846
@@ -41,6 +42,8 @@
 #include "gdal_priv.h"
 #include "cpl_conv.h"
 
+#include "Imagem.h"
+#include "ListaImagem.h"
 
 using namespace std;
 using namespace geos;
@@ -60,6 +63,15 @@ public:
     Principal ( );
     virtual ~Principal ( );
 
+    void menu_principal ();
+    void menu_imagem ();
+    void menu_geometria ();
+    
+    void imagem_cadastrar ();
+    void imagem_excluir ();
+    void imagem_detalhar ();
+    void imagem_listar ();
+
     Point * create_point (double x, double y);
     GDALDataset *poDataset;
 
@@ -67,6 +79,9 @@ protected:
 
     GeometryFactory *global_factory;
     vector<Geometry *> *geoms;
+    list<Imagem *> imagens;
+    ListaImagem lista_imagem;
+
     
     
 private:
