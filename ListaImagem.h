@@ -24,6 +24,10 @@ public:
     
     void salvar ();
     void carregar ();
+    
+    list<Imagem*>::const_iterator begin ();
+    list<Imagem*>::const_iterator end ();
+
 };
 
 #endif // LISTAIMAGEM_H

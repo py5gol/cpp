@@ -1,67 +1,18 @@
 #include "Principal.h"
 
 Principal::Principal ( ) {
-
-    cout << "inicializando objeto principal" << endl;
-
-    cout << "antes do gdalallregister" << endl;
     GDALAllRegister();
-    cout << "depois do gdalallregister" << endl;
-
-    //imagens = new vector<Imagem *>;
-
-    /*
-    cout << "imagem 1" << endl;
-    Imagem * img1 = new Imagem ( 1, (char *) "/discolocal/dados/MODIS_BR_2010001_NDVI.tif" );
-    lista_imagem.incluir ((char *) "/discolocal/dados/MODIS_BR_2010001_NDVI.tif" );
-
-    cout << "imagem 2" << endl;
-    Imagem * img2 = new Imagem ( 2, (char *) "/discolocal/dados/MODIS_BR_2010017_NDVI.tif" );
-    cout << "imagem 2." << endl;
-    imagens.push_back(img2);
-
-    cout << "imagem 3" << endl;
-    imagens.push_back(new Imagem ( 3, (char *) "/discolocal/dados/MODIS_BR_2010033_NDVI.tif" ));
-
-    cout << "imagem 4" << endl;
-    imagens.push_back(new Imagem ( 4, (char *) "/discolocal/dados/MODIS_BR_2010049_NDVI.tif" ));
-
-    cout << "imagem 5" << endl;
-    imagens.push_back(new Imagem ( 5, (char *) "/discolocal/dados/MODIS_BR_2010065_NDVI.tif" ));
-    */
-    
-	vector<Geometry *> *geoms = new vector<Geometry *>;
-	
-	// Define a precision model using 0,0 as the reference origin
-	// and 2.0 as coordinates scale.
-	PrecisionModel *pm = new PrecisionModel(2.0, 0, 0);
-
-	// Initialize global factory with defined PrecisionModel
-	// and a SRID of -1 (undefined).
-	global_factory = new GeometryFactory(pm, -1);
-
-	// We do not need PrecisionMode object anymore, it has
-	// been copied to global_factory private storage
-	delete pm;
-	
-    double x = -49.2122;
-    double y = -25.3988;
-
-    //for (list<Imagem*>::iterator it = imagens.begin(); it != imagens.end(); it++) {
-    //    cout << (*it)->getNome() << ": " << (*it)->informaIvdn(x, y) << endl;
-    //}
+	//PrecisionModel *pm = new PrecisionModel(2.0, 0, 0);
+	//global_factory = new GeometryFactory(pm, -1);
+	//delete pm;
 	
 	menu_principal ();
 }
 
 Principal::~Principal ( ) {
-
-    cout << "finalizando objeto principal" << endl;
-
 }
 
 void Principal::menu_principal () {
-
     int op = -1;
     
     while (op != 10) {
@@ -102,11 +53,9 @@ void Principal::menu_principal () {
         }
         
     }
-
 }
 
 void Principal::menu_imagem () {
-
     int op = -1;
     
     while (op != 9) {
@@ -164,11 +113,9 @@ void Principal::menu_imagem () {
         }
         
     }
-
 }
 
 void Principal::menu_geometria () {
-
     int op = -1;
     
     while (op != 9) {
@@ -185,10 +132,9 @@ void Principal::menu_geometria () {
 
         cout << ">> ";
 
-        fflush (stdin);
-        
         cin >> op;
-        
+        cin.ignore ();
+                
         cout << endl;
         
         switch (op) {
@@ -229,7 +175,6 @@ void Principal::menu_geometria () {
         }
         
     }
-
 }
 
 void Principal::imagem_cadastrar () {
@@ -312,6 +257,9 @@ void Principal::geometria_carregar () {
     lista_geometria.carregar ();
 }
 
+void Principal::calcular_ivdn () {
+    ivdnControle.calculaIvdn (lista_imagem, lista_geometria);
+}
 
 /****************************************************************************
  *

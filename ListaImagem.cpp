@@ -194,3 +194,11 @@ void ListaImagem::carregar () {
 
 }
 
+list<Imagem*>::const_iterator ListaImagem::begin () {
+    return lista.begin ();
+}
+
+list<Imagem*>::const_iterator ListaImagem::end () {
+    return lista.end ();
+}
+

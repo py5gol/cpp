@@ -31,6 +31,9 @@ public:
     void salvar ();
     void carregar ();
 
+    list<Geometria*>::const_iterator begin ();
+    list<Geometria*>::const_iterator end ();
+    
 };
 
 #endif // LISTAGEOMETRIA_H

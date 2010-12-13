@@ -198,3 +198,11 @@ void ListaGeometria::carregar () {
     return;
 }
 
+list<Geometria*>::const_iterator ListaGeometria::begin () {
+    return lista.begin ();
+}
+
+list<Geometria*>::const_iterator ListaGeometria::end () {
+    return lista.end ();
+}
+

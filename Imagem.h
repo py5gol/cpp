@@ -20,7 +20,6 @@ public:
     void imprimeInfo ();
     float informaIvdn (float, float);
 
-        
 protected:
     int codigo;
     char nome [150];
@@ -35,8 +34,6 @@ protected:
     double yd;           // altura do pixel
     char driver [50];    // nome do driver usado para manipular a imagem
     char srs [400];      // sistema de projecao
-
-private:
 
 };
 
