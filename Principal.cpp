@@ -70,10 +70,12 @@ void Principal::menu_principal () {
     
     while (op != 10) {
     
-        cout << "1. Imagens"   << endl;
-        cout << "2. Geometrias"    << endl;
-        cout << "9. Gravar"             << endl;
-        cout << "10. Sair"              << endl;
+        cout << endl;
+        cout << "1. Imagens"        << endl;
+        cout << "2. Geometrias"     << endl;
+        cout << "9. Gravar"         << endl;
+        cout << "10. Sair"          << endl;
+        cout << endl;
     
         cin >> op;
         
@@ -81,53 +83,54 @@ void Principal::menu_principal () {
         
             case 1: {
                 menu_imagem ();
-                
             } break;
                 
             case 2: {
-            
-            } break;
-            
-            case 5: {
-                lista_imagem.listar ();
-                
             } break;
             
             case 10: {
                 cout << "Fim" << endl;
-            }
+                exit (0);
+            } break;
             
             default: {
                 cout << "Opcao invalida - Pressione uma tecla." << endl;
+                getchar();
             }
+            
         }
+        
     }
 
 }
 
 void Principal::menu_imagem () {
 
-    system ("clear");
-
     int op = -1;
     
     while (op != 9) {
     
+        cout << endl;
         cout << "1. Listar todas imagens"       << endl;
         cout << "2. Cadastrar nova imagem"      << endl;
         cout << "3. Excluir imagem"             << endl;
         cout << "4. Visualizar detalhes"        << endl;
         cout << "9. Voltar"                     << endl;
-    
+        cout << endl;
+
+        cout << ">> " << endl;
         cin >> op;
         
         switch (op) {
         
             case 1: {
+                cout << "opcao 1" << endl;
                 imagem_listar ();
+                cout << "opcao 1." << endl;
             } break;
                 
             case 2: {
+                imagem_listar ();
                 imagem_cadastrar ();
             } break;
             
@@ -137,17 +140,19 @@ void Principal::menu_imagem () {
             
             case 4: {
                 imagem_detalhar ();
-            }
+            } break;
             
             case 9: {
                 menu_principal ();
-            }
+            } break;
             
             default: {
                 cout << "Opcao invalida - Pressione uma tecla." << endl;
                 getchar ();
             }
+            
         }
+        
     }
 
 }
@@ -162,10 +167,18 @@ void Principal::imagem_cadastrar () {
     
     lista_imagem.incluir (s);    
 
-    menu_imagem ();
 }
 
 void Principal::imagem_excluir () {
+
+    cout << "Informe o codigo da imagem: ";
+
+    int i;
+    
+    cin >> i;
+    
+    lista_imagem.excluir (i);    
+
 
 }
 
@@ -177,9 +190,13 @@ void Principal::imagem_listar () {
 
 void Principal::imagem_detalhar () {
 
+    menu_imagem ();
+
 }
 
 void Principal::menu_geometria () {
+
+    menu_imagem ();
 
 }
 

@@ -29,7 +29,11 @@ Imagem::~Imagem ( ) {
 
 char * Imagem::getNome () { return nome; }
 
-void Imagem::setNome (char * s) { strcpy (nome, s); };
+void Imagem::setNome (char * s) { strcpy (nome, s); }
+
+int Imagem::getCodigo () { return codigo; }
+
+void Imagem::setCodigo (int i) { codigo = i; }
 
 void Imagem::inicializa () {
 

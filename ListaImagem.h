@@ -22,6 +22,7 @@ public:
 
     void incluir (char *);
     void listar ();
+    void excluir (int);
 };
 
 #endif // LISTAIMAGEM_H

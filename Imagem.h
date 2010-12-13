@@ -12,6 +12,9 @@ public:
 
     char * getNome ();
     void setNome (char *);
+    
+    int getCodigo ();
+    void setCodigo (int);
 
     void inicializa ();
     void imprimeInfo ();
