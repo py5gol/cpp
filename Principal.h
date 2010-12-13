@@ -44,6 +44,7 @@
 
 #include "Imagem.h"
 #include "ListaImagem.h"
+#include "ListaGeometria.h"
 
 using namespace std;
 using namespace geos;
@@ -51,17 +52,11 @@ using namespace geos::geom;
 using namespace geos::operation::polygonize;
 using namespace geos::operation::linemerge;
 
-/**
-  * class Principal
-  * 
-  */
-
 class Principal
 {
 public:
-
-    Principal ( );
-    virtual ~Principal ( );
+    Principal ();
+    virtual ~Principal ();
 
     void menu_principal ();
     void menu_imagem ();
@@ -71,20 +66,27 @@ public:
     void imagem_excluir ();
     void imagem_detalhar ();
     void imagem_listar ();
+    void imagem_salvar ();
+    void imagem_carregar ();
+
+    void geometria_listar ();
+    void geometria_cadastrar ();
+    void geometria_excluir ();
+    void geometria_detalhar ();
+    void geometria_salvar ();
+    void geometria_carregar ();
+    
+
 
     Point * create_point (double x, double y);
     GDALDataset *poDataset;
 
 protected:
-
     GeometryFactory *global_factory;
     vector<Geometry *> *geoms;
-    list<Imagem *> imagens;
+    
     ListaImagem lista_imagem;
-
-    
-    
-private:
+    ListaGeometria lista_geometria;
 
 };
 

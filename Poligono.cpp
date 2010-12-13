@@ -1,23 +1,21 @@
 #include "Poligono.h"
 
-// Constructors/Destructors
-//  
-
-Poligono::Poligono ( ) {
+Poligono::Poligono (int i, Geometry * g) : Geometria (i, g) {
 }
 
-Poligono::~Poligono ( ) { }
+Poligono::~Poligono () {
+}
 
-//  
-// Methods
-//  
+float Poligono::getIvdnMedio () {
+    return 0.65;
+}
 
+void Poligono::imprimeInfo () {
+    cout << "Geometria:" << endl;
+    cout << "Tipo: Poligono" << endl;
+}
 
-// Accessor methods
-//  
-
-
-// Other methods
-//  
-
+int Poligono::getTipo () {
+    return 3;
+}
 

@@ -1,99 +1,20 @@
-
 #ifndef PONTO_H
 #define PONTO_H
-#include "Geometria.h"
 
 #include <string>
-
-/**
-  * class Ponto
-  * 
-  */
+#include "Geometria.h"
 
 class Ponto : public Geometria
 {
-public:
-
-    // Constructors/Destructors
-    //  
-
-
-    /**
-     * Empty Constructor
-     */
-    Ponto ( );
-
-    /**
-     * Empty Destructor
-     */
-    virtual ~Ponto ( );
-
-    // Static Public attributes
-    //  
-
-    // Public attributes
-    //  
-
-
-    // Public attribute accessor methods
-    //  
-
-
-    // Public attribute accessor methods
-    //  
-
-
-protected:
-
-    // Static Protected attributes
-    //  
-
-    // Protected attributes
-    //  
-
-public:
-
-
-    // Protected attribute accessor methods
-    //  
-
-protected:
-
-public:
-
-
-    // Protected attribute accessor methods
-    //  
-
-protected:
-
-
-private:
-
-    // Static Private attributes
-    //  
-
-    // Private attributes
-    //  
-
-public:
-
-
-    // Private attribute accessor methods
-    //  
-
 private:
 
 public:
+    Ponto (int i, Geometry *);
+    virtual ~Ponto ();
 
-
-    // Private attribute accessor methods
-    //  
-
-private:
-
-
-
+    float getIvdnMedio ();
+    void imprimeInfo ();
+    int getTipo ();
 };
 
 #endif // PONTO_H

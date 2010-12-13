@@ -1,13 +1,10 @@
 #ifndef LISTAIMAGEM_H
 #define LISTAIMAGEM_H
 
+#include <iostream>
+#include <fstream>
 #include <list>
 #include "Imagem.h"
-
-#include <iostream>
-using std::cout;
-using std::endl;
-
 using namespace std;
 
 class ListaImagem
@@ -23,6 +20,10 @@ public:
     void incluir (char *);
     void listar ();
     void excluir (int);
+    void detalhar (int);
+    
+    void salvar ();
+    void carregar ();
 };
 
 #endif // LISTAIMAGEM_H

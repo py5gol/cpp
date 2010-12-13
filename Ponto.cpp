@@ -1,23 +1,21 @@
 #include "Ponto.h"
 
-// Constructors/Destructors
-//  
-
-Ponto::Ponto ( ) {
+Ponto::Ponto (int i, Geometry * g) : Geometria (i, g) {
 }
 
-Ponto::~Ponto ( ) { }
+Ponto::~Ponto () {
+}
 
-//  
-// Methods
-//  
+float Ponto::getIvdnMedio () {
+    return 0.85;
+}
 
+void Ponto::imprimeInfo () {
+    cout << "Geometria:" << endl;
+    cout << "Tipo: Ponto" << endl;
+}
 
-// Accessor methods
-//  
-
-
-// Other methods
-//  
-
+int Ponto::getTipo () {
+    return 1;
+}
 

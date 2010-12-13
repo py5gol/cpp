@@ -16,9 +16,6 @@ Imagem::Imagem ( int i, char * s ) {
 
     inicializa ();
 
-    imprimeInfo();
-    /*
-    */
 }
 
 Imagem::~Imagem ( ) {

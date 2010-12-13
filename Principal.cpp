@@ -56,10 +56,6 @@ Principal::Principal ( ) {
 
 Principal::~Principal ( ) {
 
-    for (list<Imagem*>::iterator it = imagens.begin(); it != imagens.end(); it++) {
-        delete (*it);
-    }
-
     cout << "finalizando objeto principal" << endl;
 
 }
@@ -73,11 +69,12 @@ void Principal::menu_principal () {
         cout << endl;
         cout << "1. Imagens"        << endl;
         cout << "2. Geometrias"     << endl;
-        cout << "9. Gravar"         << endl;
+        cout << "3. Calcular IVDN"  << endl;
         cout << "10. Sair"          << endl;
         cout << endl;
     
         cin >> op;
+        cin.ignore ();
         
         switch (op) {
         
@@ -86,16 +83,20 @@ void Principal::menu_principal () {
             } break;
                 
             case 2: {
+                menu_geometria ();
+            } break;
+            
+            case 3: {
+                calcular_ivdn ();
             } break;
             
             case 10: {
-                cout << "Fim" << endl;
                 exit (0);
             } break;
             
             default: {
                 cout << "Opcao invalida - Pressione uma tecla." << endl;
-                getchar();
+                cin.get ();
             }
             
         }
@@ -115,22 +116,23 @@ void Principal::menu_imagem () {
         cout << "2. Cadastrar nova imagem"      << endl;
         cout << "3. Excluir imagem"             << endl;
         cout << "4. Visualizar detalhes"        << endl;
+        cout << "5. Gravar"                     << endl;
+        cout << "6. Carregar"                   << endl;
         cout << "9. Voltar"                     << endl;
         cout << endl;
 
-        cout << ">> " << endl;
+        cout << ">> ";
         cin >> op;
+        cin.ignore ();
+        cout << endl;
         
         switch (op) {
         
             case 1: {
-                cout << "opcao 1" << endl;
                 imagem_listar ();
-                cout << "opcao 1." << endl;
             } break;
                 
             case 2: {
-                imagem_listar ();
                 imagem_cadastrar ();
             } break;
             
@@ -142,13 +144,86 @@ void Principal::menu_imagem () {
                 imagem_detalhar ();
             } break;
             
+            case 5: {
+                imagem_salvar ();
+            } break;
+            
+            case 6: {
+                imagem_carregar ();
+            } break;
+            
             case 9: {
                 menu_principal ();
             } break;
             
             default: {
                 cout << "Opcao invalida - Pressione uma tecla." << endl;
-                getchar ();
+                cin.get ();
+            }
+            
+        }
+        
+    }
+
+}
+
+void Principal::menu_geometria () {
+
+    int op = -1;
+    
+    while (op != 9) {
+    
+        cout << endl;
+        cout << "1. Listar todas geometrias"    << endl;
+        cout << "2. Cadastrar nova geometria"   << endl;
+        cout << "3. Excluir geometria"          << endl;
+        cout << "4. Visualizar detalhes"        << endl;
+        cout << "5. Gravar"                     << endl;
+        cout << "6. Carregar"                   << endl;
+        cout << "9. Voltar"                     << endl;
+        cout << endl;
+
+        cout << ">> ";
+
+        fflush (stdin);
+        
+        cin >> op;
+        
+        cout << endl;
+        
+        switch (op) {
+        
+            case 1: {
+                geometria_listar ();
+            } break;
+                
+            case 2: {
+                geometria_cadastrar ();
+            } break;
+            
+            case 3: {
+                geometria_excluir ();
+            } break;
+            
+            case 4: {
+                geometria_detalhar ();
+            } break;
+            
+            case 5: {
+                geometria_salvar ();
+            } break;
+            
+            case 6: {
+                geometria_carregar ();
+            } break;
+            
+            case 9: {
+                menu_principal ();
+            } break;
+            
+            default: {
+                cout << "Opcao invalida - Pressione uma tecla." << endl;
+                cin.get();
             }
             
         }
@@ -158,76 +233,90 @@ void Principal::menu_imagem () {
 }
 
 void Principal::imagem_cadastrar () {
-
     cout << "Informe caminho e nome da imagem: ";
-
     char s [150];
-    
     cin >> s;
-    
+    cin.ignore ();
+    cout << endl;
     lista_imagem.incluir (s);    
-
 }
 
 void Principal::imagem_excluir () {
-
     cout << "Informe o codigo da imagem: ";
-
     int i;
-    
     cin >> i;
-    
+    cin.ignore ();
+    cout << endl;
     lista_imagem.excluir (i);    
-
-
 }
 
 void Principal::imagem_listar () {
-
     lista_imagem.listar ();
-
 }
 
 void Principal::imagem_detalhar () {
-
-    menu_imagem ();
-
+    cout << "Informe o codigo da imagem: ";
+    int i;
+    cin >> i;
+    cin.ignore ();
+    cout << endl;
+    lista_imagem.detalhar (i);
 }
 
-void Principal::menu_geometria () {
-
-    menu_imagem ();
-
+void Principal::imagem_salvar () {
+    lista_imagem.salvar ();
 }
 
-Point * Principal::create_point (double x, double y) {
+void Principal::imagem_carregar () {
+    lista_imagem.carregar ();
+}
 
-    Coordinate c (x, y);
-    Point * p = global_factory->createPoint(c);
-    return p;
+void Principal::geometria_listar () {
+    lista_geometria.listar ();
+}
 
+void Principal::geometria_cadastrar () {
+    int tipo;
+    string wkt;
+    cout << "Informe tipo da geometria (1. Ponto, 2. Linha, 3. Poligono): ";
+    cin >> tipo;
+    cin.ignore();
+    cout << "Informe a geometria no formato WKT: ";
+    getline (cin, wkt);
+    lista_geometria.incluir (tipo, wkt);    
+}
+
+void Principal::geometria_excluir () {
+    cout << "Informe o codigo da geometria: ";
+    int i;
+    cin >> i;
+    cin.ignore ();
+    cout << endl;
+    lista_geometria.excluir (i);    
+}
+
+void Principal::geometria_detalhar () {
+    cout << "Informe o codigo da geometria: ";
+    int i;
+    cin >> i;
+    cin.ignore();
+    cout << endl;
+    lista_geometria.detalhar (i);
+}
+
+void Principal::geometria_salvar () {
+    lista_geometria.salvar ();
+}
+
+void Principal::geometria_carregar () {
+    lista_geometria.carregar ();
 }
 
 
-
-
+/****************************************************************************
+ *
+ ****************************************************************************/ 
 int main () {
     Principal p;
- 
-
-
-    Geometry *g = (p.create_point (-48.5, -24.5));
-    
-    io::WKTWriter * writer = new io::WKTWriter();
-    
-    string tmp = writer->write(g);
-    cout << tmp << endl;   
-    
-    
-    io::WKTReader * reader = new io::WKTReader();
-    //reader->read ("POINT (-48.50 -24.50)");
-    Geometry *g2 = reader->read ("POINT (-48.50 -24.50)");
- 
-    cout << writer->write(g2) << endl;   
-    
 }
+

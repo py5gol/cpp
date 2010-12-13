@@ -1,23 +1,21 @@
 #include "Linha.h"
 
-// Constructors/Destructors
-//  
-
-Linha::Linha ( ) {
+Linha::Linha (int i, Geometry * g) : Geometria (i, g) {
 }
 
-Linha::~Linha ( ) { }
+Linha::~Linha () {
+}
 
-//  
-// Methods
-//  
+float Linha::getIvdnMedio () {
+    return 0.75;
+}
 
+void Linha::imprimeInfo () {
+    cout << "Geometria:" << endl;
+    cout << "Tipo: Linha" << endl;
+}
 
-// Accessor methods
-//  
-
-
-// Other methods
-//  
-
+int Linha::getTipo () {
+    return 2;
+}
 

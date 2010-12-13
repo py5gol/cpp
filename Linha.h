@@ -1,99 +1,18 @@
-
 #ifndef LINHA_H
 #define LINHA_H
 #include "Geometria.h"
 
-#include <string>
-
-/**
-  * class Linha
-  * 
-  */
-
 class Linha : public Geometria
 {
-public:
-
-    // Constructors/Destructors
-    //  
-
-
-    /**
-     * Empty Constructor
-     */
-    Linha ( );
-
-    /**
-     * Empty Destructor
-     */
-    virtual ~Linha ( );
-
-    // Static Public attributes
-    //  
-
-    // Public attributes
-    //  
-
-
-    // Public attribute accessor methods
-    //  
-
-
-    // Public attribute accessor methods
-    //  
-
-
-protected:
-
-    // Static Protected attributes
-    //  
-
-    // Protected attributes
-    //  
-
-public:
-
-
-    // Protected attribute accessor methods
-    //  
-
-protected:
-
-public:
-
-
-    // Protected attribute accessor methods
-    //  
-
-protected:
-
-
-private:
-
-    // Static Private attributes
-    //  
-
-    // Private attributes
-    //  
-
-public:
-
-
-    // Private attribute accessor methods
-    //  
-
 private:
 
 public:
+    Linha (int, Geometry *);
+    virtual ~Linha ();
 
-
-    // Private attribute accessor methods
-    //  
-
-private:
-
-
-
+    float getIvdnMedio ();
+    void imprimeInfo ();
+    int getTipo ();
 };
 
 #endif // LINHA_H

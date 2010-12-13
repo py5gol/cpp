@@ -1,23 +1,15 @@
 #include "Geometria.h"
 
-// Constructors/Destructors
-//  
+Geometria::Geometria (int i, Geometry * g) { 
 
-Geometria::Geometria ( ) {
+    codigo = i;
+    geometria = g;
+
 }
 
-Geometria::~Geometria ( ) { }
+Geometria::~Geometria () {}
 
-//  
-// Methods
-//  
+int Geometria::getCodigo () { return codigo; }
 
-
-// Accessor methods
-//  
-
-
-// Other methods
-//  
-
+Geometry * Geometria::getGeometria () { return geometria; }
 

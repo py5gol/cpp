@@ -1,100 +1,35 @@
-
 #ifndef LISTAGEOMETRIA_H
 #define LISTAGEOMETRIA_H
 
+#include <iostream>
+#include <fstream>
+#include <list>
 #include <string>
-#include <vector>
+#include "Geometria.h"
+#include "Ponto.h"
+#include "Linha.h"
+#include "Poligono.h"
+#include "stdlib.h"
 
-
-
-/**
-  * class ListaGeometria
-  * 
-  */
+using namespace std;
 
 class ListaGeometria
 {
-public:
-
-    // Constructors/Destructors
-    //  
-
-
-    /**
-     * Empty Constructor
-     */
-    ListaGeometria ( );
-
-    /**
-     * Empty Destructor
-     */
-    virtual ~ListaGeometria ( );
-
-    // Static Public attributes
-    //  
-
-    // Public attributes
-    //  
-
-
-    // Public attribute accessor methods
-    //  
-
-
-    // Public attribute accessor methods
-    //  
-
-
-protected:
-
-    // Static Protected attributes
-    //  
-
-    // Protected attributes
-    //  
-
-public:
-
-
-    // Protected attribute accessor methods
-    //  
-
-protected:
-
-public:
-
-
-    // Protected attribute accessor methods
-    //  
-
-protected:
-
-
 private:
-
-    // Static Private attributes
-    //  
-
-    // Private attributes
-    //  
+    list<Geometria*> lista;
+    io::WKTWriter * writer;
 
 public:
+    ListaGeometria ();
+    virtual ~ListaGeometria ();
 
-
-    // Private attribute accessor methods
-    //  
-
-private:
-
-public:
-
-
-    // Private attribute accessor methods
-    //  
-
-private:
-
-
+    void incluir (int, string);
+    void listar ();
+    void excluir (int);
+    void detalhar (int);
+    
+    void salvar ();
+    void carregar ();
 
 };
 
